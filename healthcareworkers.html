@@ -1,0 +1,282 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Hand to Healthcare Workers</title>
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: Arial, sans-serif;
+        }
+ 
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: url('image1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+        }
+ 
+        /* Background overlay with 70% opacity */
+        body::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.7); /* Black overlay with 70% opacity */
+            z-index: 0;
+        }
+ 
+        /* Ensures that the content is positioned above the overlay */
+        .container {
+            position: relative;
+            z-index: 1;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+ 
+        /* Header Styles */
+        header {
+            background: #0077b6;
+            color: #fff;
+            padding: 10px 0;
+        }
+ 
+        header h1 {
+            text-align: center;
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+ 
+        nav ul {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+        }
+ 
+        nav ul li {
+            margin: 0 15px;
+        }
+ 
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.2rem;
+        }
+ 
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+ 
+        /* Hero Section */
+        .hero {
+            background: #00b4d8;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+        }
+ 
+        .hero h2 {
+            font-size: 2.5rem;
+        }
+ 
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+        }
+ 
+        /* Content Sections */
+        .content-section {
+            background: white;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            opacity: 0.9;
+        }
+ 
+        .content-section h2 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+ 
+        .content-section ul {
+            list-style: disc;
+            padding-left: 20px;
+        }
+ 
+        .content-section ul li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+ 
+        /* Images */
+        .image-section {
+            text-align: center;
+            margin-top: 20px;
+        }
+ 
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+ 
+        /* Form Styles */
+        form {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            margin-top: 40px;
+        }
+ 
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+ 
+        form button {
+            padding: 10px 15px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+ 
+        form button:hover {
+            background-color: #005f8a;
+        }
+ 
+        /* Footer */
+        footer {
+            background: #0077b6;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+        }
+ 
+        footer p {
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Hand to Healthcare Workers</h1>
+            <nav>
+                <ul>
+                    <li><a href="#protocols">Safety Protocols</a></li>
+                    <li><a href="#guidelines">Guidelines by Role</a></li>
+                    <li><a href="#resources">Resources</a></li>
+                    <li><a href="#mental-health">Mental Health</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+ 
+    <section class="hero">
+        <div class="container">
+            <h2>Protecting Those Who Protect Us</h2>
+            <p>Learn essential safety protocols and guidelines to ensure healthcare worker safety in the workplace.</p>
+        </div>
+    </section>
+ 
+    <section id="protocols" class="content-section">
+        <div class="container">
+            <h2>Safety Protocols</h2>
+            <ul>
+                <li>Proper use of PPE (Personal Protective Equipment)</li>
+                <li>Hand hygiene and sanitation practices</li>
+                <li>Sharps safety and disposal guidelines</li>
+                <li>Workplace ergonomics and injury prevention</li>
+                <li>Dealing with hazardous materials</li>
+                <li>Violence prevention</li>
+                <li>Exposure control plans</li>
+                <li>Mental health support</li>
+                <li>Emergency preparedness</li>
+                <li>Infection control</li>
+                <li>Safe patient handiling</li>
+                <li>Chemical safety</li>
+                <li>Fire safety</li>
+                <li>Biosafety</li>
+                <li>Radiation safety</li>
+                <li><b>For additional information <a href="https://www.who.int/activities/protecting-health-and-safety-of-health-workers">CLICK</a></b></li>
+            </ul>
+            <div class="image-section">
+                <img src="safety.jpg" alt="Hand Hygiene Guidelines">
+            </div>
+        </div>
+    </section>
+ 
+    <section id="guidelines" class="content-section">
+        <div class="container">
+            <h2>Guidelines by Role</h2>
+            <ul>
+                <li>For Nurses: Infection prevention, patient handling, and PPE</li>
+                <li>For Doctors: Protocol adherence and patient communication safety</li>
+                <li>For Support Staff: Safe handling of equipment and materials</li>
+                <li>For Administrators: Managing healthcare worker well-being</li>
+                <li><b>For Additonal Informations <a href="https://www.who.int/news-room/fact-sheets/detail/patient-safety">CLICK</a></b></li>
+            </ul>
+            <div class="image-section">
+                <img src="guidelines.jpg" alt="Doctor Following Guidelines">
+            </div>
+        </div>
+    </section>
+ 
+    <section id="resources" class="content-section">
+        <div class="container">
+            <h2>Resources</h2>
+            <p>Access additional training materials, webinars, and reference documents to ensure safety in the workplace.</p>
+            <ul>
+                <li><a href="https://www.cdc.gov/niosh/healthcare/index.html">CDC Guidelines for Healthcare Workers</a></li>
+                <li><a href="https://www.who.int/health-topics/health-workforce">WHO Safety Standards</a></li>
+                <li><a href="https://www.osha.gov/coronavirus/control-prevention/healthcare-workers">Webinars on Workplace Safety</a></li>
+            </ul>
+            <div class="image-section">
+                <img src="resources.jpg" alt="Healthcare Resources">
+            </div>
+        </div>
+    </section>
+ 
+    <section id="mental-health" class="content-section">
+        <div class="container">
+            <h2>Mental Health Support</h2>
+            <p>In addition to physical safety, healthcare workers face mental health challenges. Here are some resources to support mental well-being:</p>
+            <ul>
+                <li>Employee Assistance Programs (EAP) for psychological support</li>
+                <li>Workplace counseling and mental health hotlines</li>
+                <li>Training on managing stress and preventing burnout</li>
+                <li>Resources on work-life balance for healthcare workers</li>
+                <li><b>For Additional Informations <a href="https://www.theschwartzcenter.org/mentalhealthresources/">CLICK</a></b></li>
+            </ul>
+            <div class="image-section">
+                <img src="mentalhealth.jpg" alt="Mental Health Support">
+            </div>
+        </div>
+    </section>
+ 
+    <footer>
+        <div class="container">
+ 
+            <p>For Enquiries and Suggestions</p><p>Contact us at: <a href="mailto:minhajnoushad123@gmail.com" style="color: #fff; text-decoration: underline;">minhajnoushad123@gmail.com</a></p>
+        </div>
+    </footer>
+ 
+    </body>
+</html>
