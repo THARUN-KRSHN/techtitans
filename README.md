@@ -1,7 +1,7 @@
 ![image](IMG-20240925-WA0030.jpg)
 
-# {Hand to healthcare workers} - BUILDATHON
-Tell us about your project here
+# Hand to healthcare workers - BUILDATHON
+ 
 
 ## Team Members
 [1.Tharun Krishna CU](THARUN-KRSHN)   
