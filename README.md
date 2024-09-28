@@ -9,14 +9,8 @@
 [3.Richard Robinson]   
 [4.Harsha KP]   
 
-## Link to Project
-[Embed the live link of project](live_link)
-
 ## How it Works ?
-Explaining the working of project  
+This Flask application provides a simple web-based discussion platform where users can post comments and replies.It initializes three SQLite databases: one for user names, one for comments, and one for replies. The init_db function sets up the necessary tables, dropping them if they already exist for development purposes. Users can submit their names and comments through a form, which gets stored in the respective databases. The application fetches and displays all comments along with their associated replies when users visit the discussion page. Additionally, users can reply to comments, which are also stored in the database and displayed accordingly  
 
 ## Technologies used
-List out tech stacks you have used
-
-## Other Links
-Provide any other links ( for eg. Wireframe , UI, Abstract, Presentation )
+HTML,CSS,JAVASCRIPT,FLASK,SQLITE
