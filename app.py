@@ -9,12 +9,7 @@ def init_db():
     conn = sqlite3.connect('comments.db')
     cursor = conn.cursor()
     
-    # Drop existing tables (for development purposes)
-    cursor.execute('DROP TABLE IF EXISTS replies')
-    cursor.execute('DROP TABLE IF EXISTS comments')
-    cursor.execute('DROP TABLE IF EXISTS users')
-    
-    # Users table
+    # Create users table if it doesn't exist
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS users (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -22,7 +17,7 @@ def init_db():
         )
     ''')
     
-    # Comments table (with user_id)
+    # Create comments table if it doesn't exist
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS comments (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -32,7 +27,7 @@ def init_db():
         )
     ''')
     
-    # Replies table (with user_name)
+    # Create replies table if it doesn't exist
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS replies (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -83,12 +78,18 @@ def comment():
     # Insert user and comment
     conn = sqlite3.connect('comments.db')
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO users (name) VALUES (?)', (name,))
-    user_id = cursor.lastrowid  # Get the newly created user ID
-    cursor.execute('INSERT INTO comments (content, user_id) VALUES (?, ?)', (content, user_id))
     
-    conn.commit()
-    conn.close()
+    try:
+        cursor.execute('INSERT INTO users (name) VALUES (?)', (name,))
+        user_id = cursor.lastrowid  # Get the newly created user ID
+        cursor.execute('INSERT INTO comments (content, user_id) VALUES (?, ?)', (content, user_id))
+        
+        conn.commit()  # Ensure changes are saved
+    except sqlite3.Error as e:
+        print(f"Database error: {e}")  # Error handling
+    finally:
+        conn.close()
+        
     return redirect('/discuss')
 
 @app.route('/reply/<int:comment_id>', methods=['POST'])
@@ -97,9 +98,15 @@ def reply(comment_id):
     user_name = request.form['user_name']  # Get the user's name from the form
     conn = sqlite3.connect('comments.db')
     cursor = conn.cursor()
-    cursor.execute('INSERT INTO replies (content, comment_id, user_name) VALUES (?, ?, ?)', (content, comment_id, user_name))
-    conn.commit()
-    conn.close()
+    
+    try:
+        cursor.execute('INSERT INTO replies (content, comment_id, user_name) VALUES (?, ?, ?)', (content, comment_id, user_name))
+        conn.commit()  # Ensure changes are saved
+    except sqlite3.Error as e:
+        print(f"Database error: {e}")  # Error handling
+    finally:
+        conn.close()
+        
     return redirect('/discuss')
 
 if __name__ == '__main__':
