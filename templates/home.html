@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="description" content="A comprehensive guide for healthcare workers on safety protocols, guidelines, and mental health resources.">
+    <title>Hand to Healthcare Workers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: url('/static/image1.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        /* Background overlay */
+        .overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 0;
+        }
+
+        /* Loading Animation */
+        #loading {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 255, 255, 0.8);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+        }
+
+        .loader {
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        /* Sticky Header Styles */
+        header {
+            background: #005f8a;
+            color: #fff;
+            padding: 5px 0; /* Reduced padding */
+            position: sticky;
+            top: 0;
+            z-index: 10;
+            transition: background 0.3s, transform 0.3s;
+            display: flex; /* Flexbox for layout */
+            align-items: center; /* Center vertically */
+            justify-content: space-between; /* Space out items */
+            padding: 10px 20px; /* Adjusted padding */
+        }
+
+        header:hover {
+            background: #0077b6;
+            transform: scale(1.02);
+        }
+
+        .logo {
+            max-width: 80px; /* Adjust size as needed */
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.1rem; /* Slightly smaller font size */
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        nav ul li a:hover {
+            color: #00b4d8;
+            transform: scale(1.1);
+        }
+
+        /* Hero Section */
+        .hero {
+            background: #00b4d8;
+            color: white;
+            padding: 50px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h2 {
+            font-size: 2.5rem;
+            transition: transform 0.3s;
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            margin-top: 10px;
+            opacity: 0.9;
+        }
+
+        /* Content Sections */
+        .content-section {
+            background: white;
+            padding: 40px 20px;
+            margin-bottom: 20px;
+            opacity: 0.95;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s;
+            position: relative;
+            z-index: 1;
+            text-align: center;
+        }
+
+        .content-section:hover {
+            transform: translateY(-5px) scale(1.02);
+        }
+
+        .content-section h2 {
+            margin-bottom: 20px;
+            font-size: 2rem;
+            background: linear-gradient(90deg, #005f8a, #00b4d8); /* Dual-tone gradient */
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: color 0.3s;
+        }
+
+        .content-section h2:hover {
+            color: #00b4d8;
+        }
+
+        .content-section ul {
+            list-style: disc;
+            padding-left: 20px;
+            text-align: left; /* Align bullets to left */
+            margin: 0 auto; /* Center the bullet points */
+            display: inline-block; /* Center the block */
+        }
+
+        .content-section ul li {
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+
+        /* Images */
+        .image-section {
+            margin-top: 20px;
+        }
+
+        .image-section img {
+            max-width: 100%;
+            height: auto;
+            margin-bottom: 20px;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .image-section img:hover {
+            transform: scale(1.05);
+        }
+
+        /* Button Styles */
+        .button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #0077b6;
+            color: white;
+            border-radius: 5px;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+            margin: 10px 0;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .button:hover {
+            background-color: #005f8a;
+            transform: scale(1.05);
+        }
+
+        /* Scroll to Top Button */
+        #scrollToTopBtn {
+            display: none;
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            background-color: #0077b6;
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        }
+
+        #scrollToTopBtn:hover {
+            background-color: #005f8a;
+        }
+
+        /* Footer */
+        footer {
+            background: #0077b6;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            margin-top: 10px;
+        }
+
+        .social-media {
+            margin-top: 10px;
+        }
+
+        .social-media a {
+            margin: 0 10px;
+            color: #fff;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: color 0.3s, transform 0.3s;
+        }
+
+        .social-media a:hover {
+            color: #00b4d8;
+            transform: scale(1.1);
+        }
+    </style>
+</head>
+<body>
+
+    <div id="loading">
+        <div class="loader"></div>
+    </div>
+
+    <div class="overlay"></div>
+    <header>
+        <img src="/static/logo.png" alt="Logo of Hand to Healthcare Workers" class="logo">
+        <h1 style="flex-grow: 1; text-align: center;">Hand to Healthcare Workers</h1>
+        <nav>
+            <ul>
+                <li><a href="#protocols">Protocols</a></li>
+                <li><a href="#guidelines">Guidelines</a></li>
+                <li><a href="#resources">Resources</a></li>
+                <li><a href="#mental-health">Mental Health</a></li>
+                <li><a href="/discuss">Discussion Forum</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="hero">
+        <h2>Committed to Healthcare Worker Safety</h2>
+        <p>Your safety is our priority.</p>
+    </section>
+
+    <section id="protocols" class="content-section">
+        <div class="container">
+            <h2>Safety Protocols</h2>
+            <ul>
+                <li>Proper use of PPE (Personal Protective Equipment)</li>
+                <li>Hand hygiene and sanitation practices</li>
+                <li>Sharps safety and disposal guidelines</li>
+                <li>Workplace ergonomics and injury prevention</li>
+                <li>Dealing with hazardous materials</li>
+                <li>Violence prevention</li>
+                <li>Exposure control plans</li>
+                <li>Mental health support</li>
+                <li>Emergency preparedness</li>
+                <li>Infection control</li>
+                <li>Safe patient handling</li>
+                <li>Chemical safety</li>
+                <li>Fire safety</li>
+                <li>Biosafety</li>
+                <li>Radiation safety</li>
+                <li><b>For additional information <a href="https://www.who.int/activities/protecting-health-and-safety-of-health-workers" class="button" target="_blank">CLICK</a></b></li>
+            </ul>
+            <div class="image-section">
+                <img src="/static/safety.jpg" alt="Healthcare worker demonstrating proper hand hygiene practices" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section id="guidelines" class="content-section">
+        <div class="container">
+            <h2>Guidelines by Role</h2>
+            <div class="card">
+                <b>Healthcare workers have diverse roles, each with specific guidelines to ensure effective and safe patient care. Doctors and physicians are responsible for diagnosing illnesses, prescribing treatments, and communicating effectively with patients about their conditions and treatment plans. Nurses provide direct patient care, administer medications, monitor patient health, and coordinate with doctors and other healthcare professionals. Allied health professionals, such as therapists and technicians, offer rehabilitative care and perform diagnostic tests. Healthcare support staff assist with clinical and administrative tasks, while social workers advocate for patients' needs and provide emotional support. Home care workers help with daily living activities and health monitoring. Across all roles, the core values of care, compassion, competence, communication, courage, and commitment are essential to delivering high-quality, empathetic, and effective care. These guidelines ensure that healthcare workers provide safe, effective, and compassionate care to all patients.</b>
+            </div>
+            <ul>
+                <li>For Nurses: Infection prevention, patient handling, and PPE</li>
+                <li>For Doctors: Protocol adherence and patient communication safety</li>
+                <li>For Support Staff: Safe handling of equipment and materials</li>
+                <li>For Administrators: Managing healthcare worker well-being</li>
+                <li><b>For Additional Information <a href="https://www.who.int/news-room/fact-sheets/detail/patient-safety" class="button" target="_blank">CLICK</a></b></li>
+            </ul>
+            <div class="image-section">
+                <img src="/static/guidelines.jpg" alt="Doctor Following Guidelines" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section id="resources" class="content-section">
+        <div class="container">
+            <h2>Resources</h2>
+            <p><b>Access additional training materials, webinars, and reference documents to ensure safety in the workplace.</b></p>
+            <ul>
+                <li><a href="https://www.cdc.gov/niosh/healthcare/index.html" class="button" target="_blank">CDC Guidelines for Healthcare Workers</a></li>
+                <li><a href="https://www.who.int/health-topics/health-workforce" class="button" target="_blank">WHO Safety Standards</a></li>
+                <li><a href="https://www.osha.gov/coronavirus/control-prevention/healthcare-workers" class="button" target="_blank">Webinars on Workplace Safety</a></li>
+            </ul>
+            <div class="image-section">
+                <img src="/static/resources.jpg" alt="Healthcare Resources" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <section id="mental-health" class="content-section">
+        <div class="container">
+            <h2>Mental Health Support</h2>
+            <p><b>In addition to physical safety, healthcare workers face mental health challenges. Here are some resources to support mental well-being:</b></p>
+            <ul>
+                <li>Employee Assistance Programs (EAP) for psychological support</li>
+                <li>Workplace counseling and mental health hotlines</li>
+                <li>Training on managing stress and preventing burnout</li>
+                <li>Resources on work-life balance for healthcare workers</li>
+                <li><b>For Additional Information <a href="https://www.theschwartzcenter.org/mentalhealthresources/" class="button" target="_blank">CLICK</a></b></li>
+            </ul>
+            <div class="image-section">
+                <img src="/static/mentalhealth.jpg" alt="Mental Health Support" loading="lazy">
+            </div>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>For Enquiries and Suggestions</p>
+            <p>Contact us at: <a href="mailto:minhajnoushad123@gmail.com" style="color: #fff; text-decoration: underline;">minhajnoushad123@gmail.com</a></p>
+            <div class="social-media">
+                <a href="#" target="_blank"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-twitter"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#" target="_blank"><i class="fab fa-instagram"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <button id="scrollToTopBtn" onclick="scrollToTop()">↑</button>
+
+    <script>
+        // Scroll to Top Button
+        window.addEventListener('scroll', function() {
+            const button = document.getElementById("scrollToTopBtn");
+            if (document.body.scrollTop > 20 || document.documentElement.scrollTop > 20) {
+                button.style.display = "block";
+            } else {
+                button.style.display = "none";
+            }
+        });
+
+        function scrollToTop() {
+            document.body.scrollTop = 0; // For Safari
+            document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE, and Opera
+        }
+
+        // Hide loading screen after content is loaded
+        window.addEventListener('load', function() {
+            document.getElementById('loading').style.display = 'none';
+        });
+    </script>
+</body>
+</html>

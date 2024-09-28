@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hand to Health Care Workers</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+    <style>
+        /* General styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            line-height: 1.6;
+            color: #333;
+            background: url('/static/background.jpg') no-repeat center center fixed;
+            background-size: cover;
+            position: relative;
+            min-height: 100vh;
+        }
+
+        header {
+            background: rgba(0, 31, 63, 0.9);
+            color: #fff;
+            padding: 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+        }
+
+        /* Form Styles */
+        form {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 20px;
+            margin: 20px auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+            max-width: 600px;
+            text-align: center;
+        }
+
+        form input, form textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            transition: border-color 0.3s, box-shadow 0.3s, transform 0.3s; /* Added transform for animation */
+        }
+
+        form input:hover, form textarea:hover {
+            border-color: #001F3F;
+            box-shadow: 0 0 5px rgba(0, 31, 63, 0.5);
+            transform: scale(1.02); /* Slightly scale up on hover */
+        }
+
+        form button {
+            background-color: #001F3F;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        form button:hover {
+            background-color: #001A33;
+        }
+
+        /* Comments Section */
+        .comments {
+            max-width: 600px;
+            margin: 20px auto;
+        }
+
+        .comments h2 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 2rem;
+        }
+
+        .comment {
+            background: rgba(255, 255, 255, 0.9);
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .comment:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .replies {
+            margin-top: 10px;
+        }
+
+        .reply {
+            padding: 10px;
+            margin-left: 20px;
+            border-left: 2px solid #001F3F;
+            background: rgba(240, 255, 240, 0.9);
+            border-radius: 5px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .reply:hover {
+            transform: scale(1.02);
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        /* Footer Styles */
+        footer {
+            background: #001F3F;
+            color: #fff;
+            padding: 20px 0;
+            text-align: center;
+            position: relative;
+            z-index: 1;
+        }
+
+        footer p {
+            margin-top: 10px;
+        }
+
+        footer a {
+            color: #fff;
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Hand to Health Care Workers</h1>
+    </header>
+    
+    <form action="/comment" method="post">
+        <input type="text" name="name" required placeholder="Your Name">
+        <textarea name="content" required placeholder="Write a discussion..."></textarea>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div class="comments">
+        <h2>Discussion</h2>
+        {% for comment in comments %}
+            <div class="comment">
+                <p><strong>{{ comment[2] }}:</strong> {{ comment[1] }}</p>
+                <form action="/reply/{{ comment[0] }}" method="post">
+                    <input type="text" name="user_name" required placeholder="Your Name">
+                    <textarea name="content" required placeholder="Reply..."></textarea>
+                    <button type="submit">Reply</button>
+                </form>
+                <div class="replies">
+                    {% for reply in reply_dict.get(comment[0], []) %}
+                        <div class="reply">
+                            <p><strong>{{ reply[3] }}:</strong> {{ reply[1] }}</p>
+                        </div>
+                    {% endfor %}
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+
+    <footer>
+        <p>For enquiries and suggestions, contact us at: <a href="mailto:minhajnoushad123@gmail.com">minhajnoushad123@gmail.com</a></p>
+    </footer>
+</body>
+</html>
